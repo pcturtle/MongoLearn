@@ -1,0 +1,76 @@
+mongopc> db.user.find()
+[
+  {
+    _id: ObjectId("6424153ce88d9bd324615eb6"),
+    userid: 1,
+    name: 'Prathamesh',
+    rollNo: 8,
+    salary: 10
+  },
+  {
+    _id: ObjectId("642416f2e88d9bd324615eb7"),
+    userid: 2,
+    name: 'Pratham',
+    rollNo: 10,
+    salary: 9
+  },
+  {
+    _id: ObjectId("642416f2e88d9bd324615eb8"),
+    userid: 3,
+    name: 'Priyatam',
+    rollNo: 20,
+    salary: 11
+  },
+  {
+    _id: ObjectId("642416f2e88d9bd324615eb9"),
+    userid: 4,
+    name: 'Shekhar',
+    rollNo: 15,
+    salary: 15
+  },
+  {
+    _id: ObjectId("642416f2e88d9bd324615eba"),
+    userid: 5,
+    name: 'Sourabha',
+    rollNo: 20,
+    salary: 20
+  },
+  {
+    _id: ObjectId("642418bce88d9bd324615ebb"),
+    userid: 6,
+    name: 'Pratham',
+    rollNo: 23,
+    salary: 12
+  }
+]
+mongopc> db.user.find({} , {name:1 , rollNo:1 , _id:0})
+[
+  { name: 'Prathamesh', rollNo: 8 },
+  { name: 'Pratham', rollNo: 10 },
+  { name: 'Priyatam', rollNo: 20 },
+  { name: 'Shekhar', rollNo: 15 },
+  { name: 'Sourabha', rollNo: 20 },
+  { name: 'Pratham', rollNo: 23 }
+]
+mongopc> db.user.find({} , {name:1 , rollNo:1 , _id:0}).limit(3)
+[
+  { name: 'Prathamesh', rollNo: 8 },
+  { name: 'Pratham', rollNo: 10 },
+  { name: 'Priyatam', rollNo: 20 }
+]
+mongopc> db.user.find({} , {name:1 , rollNo:1 , _id:0}).skip(3)
+[
+  { name: 'Shekhar', rollNo: 15 },
+  { name: 'Sourabha', rollNo: 20 },
+  { name: 'Pratham', rollNo: 23 }
+]
+mongopc> db.user.find({} , {name:1 , rollNo:1 , _id:0}).sort({rollNo:1})
+[
+  { name: 'Prathamesh', rollNo: 8 },
+  { name: 'Pratham', rollNo: 10 },
+  { name: 'Shekhar', rollNo: 15 },
+  { name: 'Priyatam', rollNo: 20 },
+  { name: 'Sourabha', rollNo: 20 },
+  { name: 'Pratham', rollNo: 23 }
+]
+mongopc> 
