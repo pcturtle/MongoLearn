@@ -1,0 +1,121 @@
+➜  ~ mongosh
+Current Mongosh Log ID:	642413b5e88d9bd324615eb5
+Connecting to:		mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.8.0
+Using MongoDB:		6.0.4
+Using Mongosh:		1.8.0
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2023-03-13T16:40:11.666+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+   2023-03-13T16:40:11.666+05:30: Soft rlimits for open file descriptors too low
+------
+
+------
+   Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+   metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+   
+   The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+   and anyone you share the URL with. MongoDB may use this information to make product
+   improvements and to suggest MongoDB products and deployment options to you.
+   
+   To enable free monitoring, run the following command: db.enableFreeMonitoring()
+   To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+------
+
+test> show dbs
+admin             180.00 KiB
+config             72.00 KiB
+formconfigmaster    1.10 MiB
+kyc-service        25.95 MiB
+local              80.00 KiB
+master            771.77 MiB
+mintpro           168.00 KiB
+turtlemint          1.81 GiB
+test> use mongopc
+switched to db mongopc
+mongopc> 
+mongopc> db.user.insertOne(
+... {
+... "userid" : 1 , 
+... "name" : "Prathamesh" , 
+... "rollNo" : 8 ,
+... "salary" : 10
+... }
+... )
+{
+  acknowledged: true,
+  insertedId: ObjectId("6424153ce88d9bd324615eb6")
+}
+mongopc> db.user.insertMany([
+... {
+... "userid" : 2 , 
+... "name" : "Pratham" , 
+... "rollNo" : 10 ,
+... "salary" : 8
+...  },{
+... "userid" : 3 , 
+...  "name" : "Priyatam" , 
+...  "rollNo" : 20 ,
+...  "salary" : 11
+...  },{
+...  "userid" : 4 , 
+...  "name" : "Shekhar" , 
+...  "rollNo" : 15,
+...  "salary" : 15
+...  },{
+...  "userid" : 5 , 
+...  "name" : "Sourabha" , 
+...  "rollNo" : 20,
+...  "salary" : 20
+... }
+... ])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("642416f2e88d9bd324615eb7"),
+    '1': ObjectId("642416f2e88d9bd324615eb8"),
+    '2': ObjectId("642416f2e88d9bd324615eb9"),
+    '3': ObjectId("642416f2e88d9bd324615eba")
+  }
+}
+mongopc> db.user.find()
+[
+  {
+    _id: ObjectId("6424153ce88d9bd324615eb6"),
+    userid: 1,
+    name: 'Prathamesh',
+    rollNo: 8,
+    salary: 10
+  },
+  {
+    _id: ObjectId("642416f2e88d9bd324615eb7"),
+    userid: 2,
+    name: 'Pratham',
+    rollNo: 10,
+    salary: 8
+  },
+  {
+    _id: ObjectId("642416f2e88d9bd324615eb8"),
+    userid: 3,
+    name: 'Priyatam',
+    rollNo: 20,
+    salary: 11
+  },
+  {
+    _id: ObjectId("642416f2e88d9bd324615eb9"),
+    userid: 4,
+    name: 'Shekhar',
+    rollNo: 15,
+    salary: 15
+  },
+  {
+    _id: ObjectId("642416f2e88d9bd324615eba"),
+    userid: 5,
+    name: 'Sourabha',
+    rollNo: 20,
+    salary: 20
+  }
+]
+mongopc> 
