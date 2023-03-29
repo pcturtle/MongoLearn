@@ -1,0 +1,34 @@
+mongopc> db.user.find().limit(2)
+[
+  {
+    _id: ObjectId("6424153ce88d9bd324615eb6"),
+    userid: 1,
+    name: 'Prathamesh',
+    rollNo: 8,
+    salary: 10
+  },
+  {
+    _id: ObjectId("642416f2e88d9bd324615eb7"),
+    userid: 2,
+    name: 'Pratham',
+    rollNo: 10,
+    salary: 9
+  }
+]
+mongopc> db.user.aggregate( { $group: { _id: "$name", salary: { $sum: "$salary" } } })
+[
+  { _id: 'Shekhar', salary: 15 },
+  { _id: 'Sourabha', salary: 20 },
+  { _id: 'Priyatam', salary: 11 },
+  { _id: 'Prathamesh', salary: 10 },
+  { _id: 'Pratham', salary: 21 }
+]
+mongopc> db.user.aggregate( { $group: { _id: "$name", count: { $sum:1 } } })
+[
+  { _id: 'Priyatam', count: 1 },
+  { _id: 'Prathamesh', count: 1 },
+  { _id: 'Pratham', count: 2 },
+  { _id: 'Shekhar', count: 1 },
+  { _id: 'Sourabha', count: 1 }
+]
+mongopc> 
